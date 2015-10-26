@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Selectores</title>
+    <style>
+        /* Seleccionamos aquellos enlaces cuyo href comience por nov */
+        a[href^="#nov"] { color: red; }
+        /* Seleccionamos aquellos enlaces cuyo href termine por tas */
+        a[href$="tas"] { font-size: 24px; }
+        /* Seleccionamos aquellos enlaces cuyo href contenga ini */
+        a[href*="ini"] { text-decoration: line-through; }
+        /* Seleccionamos la primera letra de los párrafos */
+        p::first-letter { font-size: 52px; }
+        /* Seleccionamos la primera línea de los párrafos */
+        p::first-line { color: green; }
+        /* Seleccionamos el texto seleccionado de los párrafos */
+        p::selection { background: royalblue; color: white; }
+    </style>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav>
+        <a href="#novedades">Novedades</a>
+        <a href="#entrevistas">Entrevistas</a>
+        <a href="#opinion">Artículos de opinión</a>
+    </nav>
+    <!-- Párrafo -->
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    </p>
+</body>
+</html>
