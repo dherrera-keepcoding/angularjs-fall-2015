@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Storage</title>
+</head>
+<body>
+    <script>
+
+        // Comprobar que el navegador soporte Web Storage.
+        if (typeof(Storage) !== "undefined") {
+
+            // Escribimos un valor en localStorage.
+            localStorage.setItem("aNumber", 10);
+
+            // Recogemos un valor de localStorage.
+            var aNumber = Number(localStorage.getItem("aNumber"));
+
+            window.console.log("aNumber (almacén local): " + aNumber);
+
+            // Escribimos un valor en sessionStorage.
+            sessionStorage.setItem("anotherNumber", 20);
+
+            // Recogemos un valor de sessionStorage.
+            var anotherNumber = Number(sessionStorage.getItem("anotherNumber"));
+
+            window.console.log("anotherNumber (almacén de sesión): " + anotherNumber);
+        }
+
+    </script>
+</body>
+</html>
