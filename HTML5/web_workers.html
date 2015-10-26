@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web Workers</title>
+</head>
+<body>
+<script>
+
+    // Comprobamos que los Web Workers están disponibles.
+    if (typeof(Worker) !== "undefined") {
+
+        // Creamos un nuevo worker que va a ejecutar
+        // en segundo plano web_worker.js
+        var worker = new Worker("web_worker.js");
+
+        // Suscribimos al worker al onmessage para
+        // recibir notificaciones de la tarea en segundo plano.
+        worker.onmessage = function(data) {
+
+            // Escribimos el contador en la consola.
+            window.console.log(data.data);
+
+            // Cuando la cuenta atrás llegue a 0,
+            // paramos el worker.
+            if (data.data == 0) {
+                worker.terminate();
+            }
+        };
+    }
+
+</script>
+</body>
+</html>
