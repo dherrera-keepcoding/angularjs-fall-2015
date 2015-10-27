@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bootstrapping</title>
+</head>
+<body>
+
+    <!-- Módulo "auto" -->
+    <div ng-app="auto">
+        <!-- Esta jerarquía está gestionada por el módulo auto -->
+    </div>
+
+    <!-- Módulo "manual" -->
+    <div id="contenedor_manual">
+        <!-- Esta jerarquía está gestionada por el módulo manual -->
+    </div>
+
+    <!-- Botón para inicializar el módulo manual -->
+    <button onclick="inicializarModuloManual()">Inicializar</button>
+
+    <!-- Cargamos la librería de jQuery -->
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+    <!-- Cargamos la librería de AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+
+    <script>
+
+        // Setter del módulo "auto".
+        angular.module("auto", []);
+
+        // Fase de config del módulo "auto".
+        angular.module("auto").config(function() {
+            window.console.log("Estoy en fase config.");
+        });
+
+        // Fase de run del módulo "auto".
+        angular.module("auto").run(function() {
+            window.console.log("Estoy en fase run.")
+        });
+
+    </script>
+    <script>
+
+        // Setter del módulo "manual".
+        angular.module("manual", []);
+
+        // Se encarga de inicializar el módulo "manual".
+        function inicializarModuloManual() {
+
+            var elemento = angular.element("#contenedor_manual");
+            angular.bootstrap(elemento, ["manual"]);
+        }
+
+        // Fase de config del módulo "manual".
+        angular.module("manual").config(function() {
+            window.console.log("Estoy en fase config en el módulo manual.");
+        });
+
+        // Fase de run del módulo "manual".
+        angular.module("manual").run(function() {
+            window.console.log("Estoy en fase run en el módulo manual.")
+        });
+
+    </script>
+</body>
+</html>
