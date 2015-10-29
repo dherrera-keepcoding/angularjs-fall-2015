@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body ng-app="test">
+
+    <!-- Pruebas de two-way data binding y one-time binding -->
+    <div ng-controller="Sincronizacion">
+
+        <!-- Ejemplo de two-way databinding -->
+        <p>Ejemplo de two-way databinding</p>
+        <input type="text" ng-model="twoWayDatabinding.nombre" />
+        <span>Buenas noches {{ twoWayDatabinding.nombre }}</span>
+
+        <!-- Ejemplo de one-time binding -->
+        <p>Ejemplo de one-time binding</p>
+        <input type="text" ng-model="oneTimeBinding.nombre" />
+        <span>Buenas noches {{ ::oneTimeBinding.nombre }} y el valor {{ oneTimeBinding.valorNumerico }}</span>
+
+        <!-- Ejemplo de ngModelOptions -->
+        <p>Ejemplo de ngModelOptions</p>
+        <!-- Ejemplo de updateOn -->
+        <input type="text" ng-model="ngModelOptions.nombre" ng-model-options="{ updateOn: 'blur' }" />
+        <span>Buenas noches {{ ngModelOptions.nombre}}</span>
+        <!-- Ejemplo de debounce -->
+        <input type="text" ng-model="ngModelOptions.mascota" ng-model-options="{ debounce: 3000 }" />
+        <span>Tu mascota se llama {{ ngModelOptions.mascota }}</span>
+    </div>
+
+    <!-- Cargamos la librería de AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script>
+
+        // Creo una aplicación test.
+        angular.module("test", []);
+
+        angular.module("test").controller("Sincronizacion", function($scope) {
+
+            // Creamos los objetos vacíos.
+            $scope.twoWayDatabinding = {};
+            $scope.oneTimeBinding = { valorNumerico: 8 };
+            $scope.ngModelOptions = {};
+
+            // Los $watch atienden una expresión y actúan cuando el valor cambia.
+            $scope.$watch(
+                function() { return $scope.oneTimeBinding.nombre; },
+                function(value) { if (value) { window.console.log(value); } }
+            );
+        });
+
+    </script>
+</body>
+</html>
