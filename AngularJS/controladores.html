@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Controladores y Scopes</title>
+</head>
+<body ng-app="test">
+
+    <!-- Barra de navegación -->
+    <nav ng-controller="BarraNavegacionCtrl">
+        <a href="#">{{ nombreSeccion1 }}</a>
+        <a href="#">{{ nombreSeccion2 }}</a>
+        <a href="#">{{ nombreSeccion3 }}</a>
+        <button ng-click="mostrarMensaje()">Mostrar mensaje</button>
+    </nav>
+
+    <!-- Jerarquía de controladores / scopes -->
+    <div ng-controller="ControladorPadre">
+
+        <p>Soy un controlador</p>
+        <!-- Al hacer clic enviarmos una notificación hacia abajo en la jerarquía de scopes -->
+        <button ng-click="enviarMensajeAlHijo()">Notificar al hijo</button>
+
+
+        <div ng-controller="ControladorHijo">
+            <p>Y yo su hijo!!</p>
+            <!-- Al hacer clic enviarmos una notificación hacia arriba en la jerarquía de scopes -->
+            <button ng-click="enviarMensajeAlPadre()">Notificar al padre</button>
+        </div>
+    </div>
+
+    <!-- Cargamos la librería de AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script>
+
+        // Creamos un módulo test.
+        angular.module("test", []);
+
+        // Controlador para gestionar la barra de navegación.
+        angular.module("test").controller("BarraNavegacionCtrl", function($scope) {
+
+            // Asignamos valores en el scope para que la vista los tenga disponibles.
+            $scope.nombreSeccion1 = "Mi sección";
+            $scope.nombreSeccion2 = "Otra sección molona";
+            $scope.nombreSeccion3 = "Una última sección";
+
+            // Establecemos comportamiento en el scope para que la vista los tenga disponibles.
+            $scope.mostrarMensaje = function() {
+                alert("Buenas noches alumnos de Keep Coding");
+            };
+        });
+
+        // Controlador Padre.
+        angular.module("test").controller("ControladorPadre", function($scope) {
+
+            $scope.enviarMensajeAlHijo = function() {
+                // Con $broadcast enviarmos una notificación hacia abajo en la jerarquía de scopes.
+                $scope.$broadcast("EventoHaciaAbajo", "Hola hijo!!");
+            };
+
+            $scope.$on("EventoHaciaArriba", function(evento, datos) {
+                // Con evento.preventDefault() paramos la propagación del evento.
+                evento.preventDefault();
+                alert(datos);
+            });
+        });
+
+        // Controlador Hijo.
+        angular.module("test").controller("ControladorHijo", function($scope) {
+
+            $scope.$on("EventoHaciaAbajo", function(evento, datos) {
+
+                // Con evento.preventDefault() paramos la propagación del evento.
+                evento.preventDefault();
+                alert(datos);
+            });
+
+            $scope.enviarMensajeAlPadre = function() {
+                // Con $emit enviarmos una notificación hacia arriba en la jerarquía de scopes.
+                $scope.$emit("EventoHaciaArriba", "Hola papá!!");
+            };
+        });
+
+    </script>
+</body>
+</html>
