@@ -1,6 +1,6 @@
 
 // Definición de la aplicación.
-angular.module("cutregram", []);
+angular.module("cutregram", ["ngRoute"]);
 
 // En fase de config, inyectamos $httpProvider para configurar las cabeceras
 // por defecto de los distintos métodos HTTP del servicio $http, que usamos
@@ -11,11 +11,33 @@ angular.module("cutregram").config(function($httpProvider) {
     // servidor en todas las peticiones. En este caso, enviarmos la API Key para
     // firmar las acciones.
     $httpProvider.defaults.headers.common = {
-        "X-Cutregram-Api-Key": "875da0e7bf704c62bccf165d73816134"
+        "X-Cutregram-Api-Key": "6e8b1a9abe094dcb831c1ee85bdfb27d"
     };
 
     // Configuramos las cabeceras por defecto para evitar problemas de CORS.
     $httpProvider.defaults.headers.post = {};
     $httpProvider.defaults.headers.put = {};
     $httpProvider.defaults.headers.patch = {};
+});
+
+// En fase de config inyectamos $routeProvider para configurar las rutas de la aplicación.
+angular.module("cutregram").config(function($routeProvider) {
+
+    // Definir la ruta de "Todos los posts".
+    $routeProvider.when("/todos", {
+        controller: "ColeccionPostsCtrl",
+        templateUrl: "views/ColeccionPosts.html"
+    });
+
+    // Definir la ruta de "Mis posts".
+    $routeProvider.when("/mios", {
+        controller: "MisPostsCtrl",
+        templateUrl: "views/MisPosts.html"
+    });
+
+    // Configuramos una ruta por defecto.
+    $routeProvider.otherwise({
+        redirectTo: "/todos"
+    });
+
 });
