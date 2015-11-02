@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Promesas</title>
+</head>
+<body ng-app="test">
+
+    <div ng-controller="PromesaCtrl"></div>
+
+    <!-- Cargamos la librería de AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script>
+
+        // Creo un nuevo módulo "test".
+        angular.module("test", []);
+
+        // Servicio para trabajar con objetos diferidos.
+        // Inyectamos el servicio $q para trabajar con objetos diferidos.
+        angular.module("test").service("Diferido", function($q) {
+
+            // Hacemos una operación asíncrona y resolvemos o rechazamos el diferido.
+            this.dameUnaPromesa = function() {
+
+                // Creamos el objeto diferido.
+                var diferido = $q.defer();
+
+                setTimeout(function() {
+
+                    // Resolvemos para indicar que la operación ha ido bien.
+                    diferido.resolve("Todo ha ido bien");
+
+                    // Rechazamos para indicar que la operación no ha ido bien.
+                    //diferido.reject("Algo ha ido mal");
+
+                }, 3000);
+
+                // Siempre retornamos la promesa.
+                return diferido.promise;
+            };
+        });
+
+        // Controlador para probar las promesas.
+        angular.module("test").controller("PromesaCtrl", function($scope, Diferido) {
+
+            // Pido una promesa al servicio.
+            Diferido.dameUnaPromesa().then(
+
+                // Fue genial la operación.
+                function(datos) {
+                    alert("Success: " + datos);
+                },
+
+                // Algo fue mal en la operación.
+                function(datos) {
+                    alert("Error:" + datos);
+                }
+            );
+        });
+
+    </script>
+</body>
+</html>

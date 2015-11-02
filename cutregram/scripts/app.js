@@ -11,7 +11,7 @@ angular.module("cutregram").config(function($httpProvider) {
     // servidor en todas las peticiones. En este caso, enviarmos la API Key para
     // firmar las acciones.
     $httpProvider.defaults.headers.common = {
-        "X-Cutregram-Api-Key": "aqui-va-tu-api-key"
+        "X-Cutregram-Api-Key": "875da0e7bf704c62bccf165d73816134"
     };
 
     // Configuramos las cabeceras por defecto para evitar problemas de CORS.
