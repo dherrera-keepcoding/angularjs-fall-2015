@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Services, Factories y Providers</title>
+</head>
+<body ng-app="test">
+
+    <div ng-controller="EjemploCtrl">
+        <div><strong>Dato desde servicio:</strong> {{ datoDesdeServicio }}</div>
+        <div><strong>Dato desde factory:</strong> {{ datoDesdeFactory }}</div>
+        <div><strong>Dato desde provider:</strong> {{ datoDesdeProvider }}</div>
+    </div>
+
+    <!-- Cargamos la librería de AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+    <script>
+
+        // Creamos un modulo test.
+        angular.module("test", []);
+
+        // Configuramos el provider.
+        angular.module("test").config(function(EjemploProviderProvider) {
+
+            EjemploProviderProvider.establecerMensaje("Soy un mensaje dede un provider.")
+        });
+
+        // Ejemplo de servicio.
+        angular.module("test").service("EjemploServicio", function() {
+
+            // Solo aquello que sea público, es decir, que cuelgue de "this", se puede usar desde fuera.
+            this.miFuncion = function() {
+                return "Soy una función pública en un servicio.";
+            };
+        });
+
+        // Ejemplo de factory.
+        angular.module("test").factory("EjemploFactory", function() {
+
+            // Los factories pueden retornar cualquier tipo.
+            return 2;
+        });
+
+        // Ejemplo de provider.
+        angular.module("test").provider("EjemploProvider", function() {
+
+            var mensaje = "";
+
+            return {
+                // Todas las propiedades distintas a $get están disponibles en fase de config.
+                establecerMensaje: function(valor) {
+                    mensaje = valor;
+                },
+                // La propiedad $get representa el factory que se inyecta en fase de run.
+                $get: [function() {
+
+                    return {
+                        obtenerMensaje: function() {
+                            return mensaje;
+                        }
+                    };
+                }]
+            };
+        });
+
+        // Controlador para ver cómo funcionan los services, factories y providers.
+        angular.module("test").controller("EjemploCtrl", function($scope, EjemploServicio, EjemploFactory, EjemploProvider) {
+
+            // Valor recogido de un servicio.
+            $scope.datoDesdeServicio = EjemploServicio.miFuncion();
+
+            // Valor recogido de un factory.
+            $scope.datoDesdeFactory = EjemploFactory;
+
+            // Valor recogido de un provider.
+            $scope.datoDesdeProvider = EjemploProvider.obtenerMensaje();
+        });
+
+    </script>
+</body>
+</html>
