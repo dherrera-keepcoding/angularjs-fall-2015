@@ -5,13 +5,13 @@ angular.module("cutregram", ["ngRoute"]);
 // En fase de config, inyectamos $httpProvider para configurar las cabeceras
 // por defecto de los distintos métodos HTTP del servicio $http, que usamos
 // para pedir los datos al servidor.
-angular.module("cutregram").config(function($httpProvider) {
+angular.module("cutregram").config(function($httpProvider, Properties) {
 
     // Configuramos el servicio $http para que envíe la cabecera necesaria al
     // servidor en todas las peticiones. En este caso, enviarmos la API Key para
     // firmar las acciones.
     $httpProvider.defaults.headers.common = {
-        "X-Cutregram-Api-Key": "6e8b1a9abe094dcb831c1ee85bdfb27d"
+        "X-Cutregram-Api-Key": Properties.apiKey
     };
 
     // Configuramos las cabeceras por defecto para evitar problemas de CORS.
@@ -21,7 +21,7 @@ angular.module("cutregram").config(function($httpProvider) {
 });
 
 // En fase de config inyectamos $routeProvider para configurar las rutas de la aplicación.
-angular.module("cutregram").config(function($routeProvider) {
+angular.module("cutregram").config(function($routeProvider, Properties) {
 
     // Definir la ruta de "Todos los posts".
     $routeProvider.when("/todos", {
@@ -31,7 +31,9 @@ angular.module("cutregram").config(function($routeProvider) {
         // Tenemos que usar la anotación de array en línea.
         resolve: {
             Posts: ["$http", function($http) {
-                return $http.get("http://cutregram-sp.appspot.com/api/1/posts");
+                return $http.get(Properties.backendUrl + "/posts", {
+                    cache: true
+                });
             }]
         }
     });
@@ -44,7 +46,9 @@ angular.module("cutregram").config(function($routeProvider) {
         // Tenemos que usar la anotación de array en línea.
         resolve: {
             Posts: ["$http", function($http) {
-                return $http.get("http://cutregram-sp.appspot.com/api/1/posts/me");
+                return $http.get(Properties.backendUrl + "/posts/me", {
+                    cache: true
+                });
             }]
         }
     });
