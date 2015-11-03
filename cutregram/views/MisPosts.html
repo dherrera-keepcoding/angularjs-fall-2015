@@ -4,26 +4,9 @@
     </header>
     <!-- Pintamos una tabla para mostrar los posts -->
     <table class="table">
-        <!-- Con la directiva ngRepeat iteramos sobre la colección
-        de posts para pintar cada línea (post) de la tabla -->
-        <tr ng-repeat="post in posts">
-            <td>
-                <!-- Con la directiva ngIf pintamos el elemento que la usa cuando su conftenido
-                resuelve como "true". En caso contrario, el elemento no se pinta -->
-                <img ng-src="{{post.image_url}}" ng-if="post.image_url" alt="Imagen" width="64" class="img-rounded" />
-            </td>
-            <td>{{ post.text }}</td>
-            <td>{{ post.author }}</td>
-            <td>
-                <button class="btn btn-primary" type="button" ng-click="meGusta(post)">
-                    Me gusta <span class="badge">{{ post.likes }}</span>
-                </button>
-            </td>
-            <td>
-                <button class="btn btn-danger" type="button" ng-click="noMeGusta(post)">
-                    No me gusta <span class="badge">{{ post.dislikes }}</span>
-                </button>
-            </td>
-        </tr>
+        <!-- Usamos una directiva "elementoPost" por cada post de la colección -->
+        <tr ng-repeat="post in posts"
+            elemento-post
+            post="post"></tr>
     </table>
 </div>
