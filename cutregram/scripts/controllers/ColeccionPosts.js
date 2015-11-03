@@ -4,4 +4,10 @@ angular.module("cutregram").controller("ColeccionPostsCtrl", function($scope, Po
 
     $scope.posts = Posts.data;
 
+    // Redirigir el navegador al detalle del post indicado.
+    $scope.navegar = function(idPost) {
+        // TODO: Navegar.
+        alert("Navegar al post " + idPost);
+    };
+
 });

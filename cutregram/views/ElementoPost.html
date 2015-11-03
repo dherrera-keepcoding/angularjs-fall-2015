@@ -3,7 +3,11 @@
         <img ng-src="{{ post.image_url }}" ng-if="post.image_url" alt="Imagen" width="64" class="img-rounded" />
     </td>
     <td>
-        <div>{{ post.text }}</div>
+        <div>
+            <button class="btn btn-link" ng-click="notificarClick()">
+                {{ post.text }}
+            </button>
+        </div>
         <div>
             <small>
                 {{ post.author | Firma:post.created }}
