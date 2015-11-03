@@ -41,6 +41,16 @@ angular.module("cutregram").provider("Backend", function($httpProvider) {
                     return $http.get(urlBackend + "/posts/me", {
                         cache: true
                     });
+                },
+
+                // Sumamos un "me gusta" al post indicado.
+                sumarMeGusta: function(idPost) {
+                    return $http.post(urlBackend + "/posts/" + idPost + "/like");
+                },
+
+                // Sumamos un "no me gusta" al post indicado.
+                sumarNoMeGusta: function(idPost) {
+                    return $http.post(urlBackend + "/posts/" + idPost + "/dislike");
                 }
             };
 
