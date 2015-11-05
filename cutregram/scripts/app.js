@@ -41,6 +41,19 @@ angular.module("cutregram").config(function($routeProvider) {
         }
     });
 
+    // Definir la ruta de "Detalle de Post".
+    $routeProvider.when("/detalle/:idPost", {
+        controller: "DetallePostCtrl",
+        templateUrl: "views/DetallePost.html",
+        // En "resolve" establecemos todas aquellas dependencias que tenga el controlador.
+        // Tenemos que usar la anotación de array en línea.
+        resolve: {
+            Post: ["Backend", "$route", function(Backend, $route) {
+                return Backend.obtenerPost($route.current.params.idPost);
+            }]
+        }
+    });
+
     // Configuramos una ruta por defecto.
     $routeProvider.otherwise({
         redirectTo: "/todos"

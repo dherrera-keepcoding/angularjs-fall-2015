@@ -1,0 +1,13 @@
+
+<article>
+    <header>
+        <button class="btn btn-link" ng-click="volver()">Volver</button>
+    </header>
+    <img ng-src="{{ ::post.image_url }}" alt="Imagen" class="img-circle" width="250" />
+    <h4>{{ ::post.text }}</h4>
+    Me gusta <span class="badge">{{ ::post.likes }}</span>
+    No me gusta <span class="badge">{{ ::post.dislikes }}</span>
+    <footer>
+        <small>{{ ::post.author | Firma:post.created }}</small>
+    </footer>
+</article>
