@@ -56,9 +56,13 @@ angular.module("cutregram").provider("Backend", function($httpProvider) {
                 // Sumamos un "no me gusta" al post indicado.
                 sumarNoMeGusta: function(idPost) {
                     return $http.post(urlBackend + "/posts/" + idPost + "/dislike");
+                },
+
+                // Añadimos un nuevo comentario.
+                enviarComentario: function(idPost, comentario) {
+                    return $http.post(urlBackend + "/posts/" + idPost + "/comments", comentario);
                 }
             };
-
         }]
     };
 
