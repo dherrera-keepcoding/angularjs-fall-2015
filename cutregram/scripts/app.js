@@ -1,6 +1,6 @@
 
 // Definición de la aplicación.
-angular.module("cutregram", ["ngRoute", "angular-loading-bar"]);
+angular.module("cutregram", ["ngRoute", "angular-loading-bar", "ui.bootstrap"]);
 
 // En fase de config, inyectamos $httpProvider para configurar las cabeceras
 // por defecto de los distintos métodos HTTP del servicio $http, que usamos
