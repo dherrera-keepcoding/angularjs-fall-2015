@@ -1,21 +1,13 @@
-<div>
-    <header>
-        <h2>Todos</h2>
-    </header>
-    <!-- Pintamos una caja de texto para filtrar por autor. -->
-    <form class="form-inline">
-        <div class="form-group">
-            <label for="filtroAutor">Autor del post</label>
-            <input type="text" id="filtroAutor" ng-model="filtroPorAutor" />
-        </div>
-    </form>
+
+<div class="coleccion-posts">
     <!-- Pintamos una tabla para mostrar los posts -->
     <table class="table">
-        <!-- Usamos una directiva "elementoPost" por cada post de la colección -->
-        <tr ng-repeat="post in posts | filter:{ author: filtroPorAutor }"
-            elemento-post
-            post="post"
-            on-post-click="navegar(idPost)"></tr>
+        <tbody>
+            <tr ng-repeat="post in posts track by post.id"
+                elemento-post
+                post="post"
+                on-post-click="navegar(idPost)"></tr>
+        </tbody>
     </table>
     <!-- Pintamos un control de paginación. Esto es una directiva de Angular UI Bootstrap -->
     <uib-pagination
@@ -27,7 +19,6 @@
             first-text="&lt;&lt;"
             last-text="&gt;&gt;"
             previous-text="&lt;"
-            next-text="&gt;"
-    ></uib-pagination>
-
+            next-text="&gt;">
+    </uib-pagination>
 </div>

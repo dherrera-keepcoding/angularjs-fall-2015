@@ -1,11 +1,9 @@
-<div>
-    <header>
-        <h2>Míos</h2>
-    </header>
+
+<div class="mis-posts">
     <!-- Pintamos una tabla para mostrar los posts -->
     <table class="table">
         <!-- Usamos una directiva "elementoPost" por cada post de la colección -->
-        <tr ng-repeat="post in posts"
+        <tr ng-repeat="post in posts track by post.id"
             elemento-post
             post="post"></tr>
     </table>

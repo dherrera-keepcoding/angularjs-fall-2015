@@ -12,6 +12,13 @@ angular.module("cutregram").config(function(BackendProvider, Properties) {
     BackendProvider.establecerUrlBackend(Properties.backendUrl);
 });
 
+// En fase de config, inyectamos cfpLoadingBarProvider para configurar
+// la barra de progreso que se muestra con las peticiones HTTP.
+angular.module("cutregram").config(function(cfpLoadingBarProvider) {
+
+    cfpLoadingBarProvider.includeSpinner = false
+});
+
 // En fase de config inyectamos $routeProvider para configurar las rutas de la aplicación.
 angular.module("cutregram").config(function($routeProvider) {
 

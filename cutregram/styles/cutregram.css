@@ -1,0 +1,103 @@
+
+table tbody tr:hover {
+    background: #f4f4f4;
+    cursor: pointer;
+}
+
+.votacion>div:nth-child(1),
+.votacion>div:nth-child(2) {
+    display: inline-block;
+    width: 40px;
+}
+
+.votacion>div:nth-child(1)>div,
+.votacion>div:nth-child(2)>div {
+    text-align: center;
+}
+
+.votacion>div:nth-child(1) i {
+    color:dodgerblue;
+}
+
+.votacion>div:nth-child(2) i {
+    color: orange;
+}
+
+.votacion>div:nth-child(1) i:hover,
+.votacion>div:nth-child(2) i:hover {
+    cursor: pointer;
+}
+
+.coleccion-posts table,
+.mis-posts table {
+    margin-top: 30px;
+}
+
+.coleccion-posts table tbody tr:nth-child(1) td,
+.mis-posts table tbody tr:nth-child(1) td {
+    border-top: none;
+}
+
+.coleccion-posts table tbody tr td:nth-child(2) small,
+.mis-posts table tbody tr td:nth-child(2) small {
+    color: grey;
+    border-top: 1px dotted grey;
+    padding-top: 2px;
+}
+
+.coleccion-posts table tbody tr td,
+.mis-posts table tbody tr td {
+    vertical-align: middle;
+}
+
+.barra-navegacion {
+    margin-top: 24px;
+}
+
+.comentarios,
+.comentarios form,
+.comentarios ul {
+    margin-top: 20px;
+}
+
+.comentarios form div input {
+    width: 400px !important;
+}
+
+.comentarios ul li {
+    border-left: none;
+    border-right: none;
+    vertical-align: middle;
+}
+
+.comentarios ul li p,
+.comentarios ul li small {
+    display: inline-block;
+}
+
+.comentarios ul li small {
+    color: grey;
+}
+
+.detalle {
+    margin-top: 20px;
+}
+
+.detalle>div {
+    display: inline-block;
+}
+
+.detalle>div:nth-child(2) {
+    margin-left: 20px;
+    vertical-align: top;
+}
+
+.detalle>div:nth-child(2) small {
+    padding-bottom: 16px;
+    display: block;
+    color: gray;
+}
+
+.detalle>div:nth-child(2) div button {
+    margin-top: 24px;
+}

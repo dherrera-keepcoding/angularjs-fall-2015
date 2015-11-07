@@ -1,22 +1,26 @@
 
 <!-- Este artículo hace referencia a los detalles del post -->
-<article>
-    <header>
-        <button class="btn btn-link" ng-click="volver()">Volver</button>
-    </header>
-    <img ng-src="{{ ::post.image_url }}" alt="Imagen" class="img-circle" width="250" />
-    <h4>{{ ::post.text }}</h4>
-    Me gusta <span class="badge">{{ ::post.likes }}</span>
-    No me gusta <span class="badge">{{ ::post.dislikes }}</span>
-    <footer>
+<article class="detalle">
+    <div>
+        <img ng-src="{{ ::post.image_url }}" alt="Imagen" class="img-rounded" width="250" />
+    </div>
+    <div>
+        <h4>{{ ::post.text }}</h4>
         <small>{{ ::post.author | Firma:post.created }}</small>
-    </footer>
+        <votacion-post post="post"></votacion-post>
+        <div>
+            <button class="btn btn-info" ng-click="volver()">
+                <i class="glyphicon glyphicon-chevron-left"></i>
+                <span>Volver</span>
+            </button>
+        </div>
+    </div>
 </article>
 
 <!-- Este div hace referencia a los comenterios del post -->
-<div>
+<div class="comentarios">
     <header>
-        <h4>Comentarios</h4>
+        <h5>Comentarios</h5>
     </header>
     <!-- Formulario para añadir comentario -->
     <form class="form-inline">
@@ -26,13 +30,11 @@
         </div>
         <button type="submit" class="btn btn-default" ng-click="enviarComentario()">Enviar</button>
     </form>
-
     <!-- Colección de comentarios -->
-    <div class="list-group">
-        <a href="#" class="list-group-item" ng-repeat="comentario in post.comments">
-            <h4 class="list-group-item-heading">{{ ::comentario.text }}</h4>
-            <p class="list-group-item-text">{{ ::post.author | Firma:post.created }}</p>
-        </a>
-    </div>
-
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="comentario in post.comments">
+            <p>{{ ::comentario.text }}</p>
+            <small> - {{ ::post.author | Firma:post.created }}</small>
+        </li>
+    </ul>
 </div>

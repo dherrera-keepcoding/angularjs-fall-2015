@@ -5,33 +5,41 @@
     <title>Cutregram</title>
     <!-- Cargamos los estilos de Bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
+    <!-- Cargamos los estilos de Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Cargamos los estilos de angular-loading-bar -->
     <link rel="stylesheet" href="styles/loading-bar.min.css" />
+    <!-- Cargamos los estilos de la aplicación -->
+    <link rel="stylesheet" href="styles/cutregram.css" />
 </head>
 <body ng-app="cutregram">
 
     <!-- Contenedor general de la aplicación -->
-    <div class="container">
-        <!-- Cabecera -->
-        <header>
-            <h1>Cutregram</h1>
-        </header>
-        <!-- Barra de navegación -->
-        <nav ng-controller="BarraNavegacionCtrl">
-            <ul class="nav nav-tabs">
-                <!-- La directiva ngClass espera un objeto JSON donde las keys sean
-                las clases CSS a usar, y el valor de dichas keys la condición que hará
-                que se use o no -->
-                <li role="presentation" ng-class="{ 'active': rutaEsTodos() }">
-                    <a href="#/todos">Todos los posts</a>
-                </li>
-                <li role="presentation" ng-class="{ 'active': rutaEsMios() }">
-                    <a href="#/mios">Mis posts</a>
-                </li>
-            </ul>
-        </nav>
-        <!-- Contenedor de las vistas -->
-        <section ng-view></section>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1">
+                <!-- Cabecera -->
+                <header>
+                    <h1>Cutregram</h1>
+                </header>
+                <!-- Barra de navegación -->
+                <nav ng-controller="BarraNavegacionCtrl" class="barra-navegacion">
+                    <ul class="nav nav-tabs">
+                        <!-- La directiva ngClass espera un objeto JSON donde las keys sean
+                        las clases CSS a usar, y el valor de dichas keys la condición que hará
+                        que se use o no -->
+                        <li role="presentation" ng-class="{ 'active': rutaEsTodos() }">
+                            <a href="#/todos">Todos los posts</a>
+                        </li>
+                        <li role="presentation" ng-class="{ 'active': rutaEsMios() }">
+                            <a href="#/mios">Mis posts</a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- Contenedor de las vistas -->
+                <section ng-view></section>
+            </div>
+        </div>
     </div>
 
     <!-- Cargamos la librería de AngularJS -->
@@ -55,6 +63,7 @@
     <script src="scripts/controllers/DetallePost.js"></script>
     <!-- Cargamos las directivas -->
     <script src="scripts/directives/ElementoPost.js"></script>
+    <script src="scripts/directives/VotacionPost.js"></script>
 
 </body>
 </html>

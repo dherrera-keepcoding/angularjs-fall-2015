@@ -24,6 +24,8 @@ angular.module("cutregram").controller("DetallePostCtrl", function($scope, Post,
                 // Añadimos el comentario creado en la colección
                 // del post. Nos ahorramos ir de nuevo a por el post.
                 $scope.post.comments.unshift( respuesta.data );
+                // Limpiamos la caja de texto.
+                $scope.comentario = "";
             },
             function(error) {
                 // TODO: Mostrar el error.

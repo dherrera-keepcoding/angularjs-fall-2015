@@ -1,0 +1,19 @@
+
+<div class="votacion">
+    <div>
+        <div>
+            <i class="fa fa-arrow-circle-up fa-2x" ng-click="meGusta($event)"></i>
+        </div>
+        <div>
+            <span class="badge">{{ post.likes }}</span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <i class="fa fa-arrow-circle-down fa-2x" ng-click="noMeGusta($event)"></i>
+        </div>
+        <div>
+            <span class="badge">{{ post.dislikes }}</span>
+        </div>
+    </div>
+</div>

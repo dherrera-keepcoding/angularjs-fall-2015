@@ -6,6 +6,6 @@ angular.module("cutregram").filter("Firma", function($filter) {
     // Además, siempre tienen al menos un parámetro, que es el dato de entrada.
     return function(autor, fecha) {
 
-        return "Publicado por " + autor + " en " + $filter("date")(fecha, "medium");
+        return "Publicado por " + autor + " en " + $filter("date")(fecha, "dd/MM/yy");
     };
 });
