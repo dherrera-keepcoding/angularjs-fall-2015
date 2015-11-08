@@ -34,6 +34,11 @@
                         <li role="presentation" ng-class="{ 'active': rutaEsMios() }">
                             <a href="#/mios">Mis posts</a>
                         </li>
+                        <!-- Botón que lleva a la vista de Nuevo Post -->
+                        <a class="btn btn-link pull-right" href="#/nuevo" role="button">
+                            <i class="glyphicon glyphicon-plus"></i>
+                            <span>Nuevo Post</span>
+                        </a>
                     </ul>
                 </nav>
                 <!-- Contenedor de las vistas -->
@@ -61,9 +66,11 @@
     <script src="scripts/controllers/MisPosts.js"></script>
     <script src="scripts/controllers/BarraNavegacion.js"></script>
     <script src="scripts/controllers/DetallePost.js"></script>
+    <script src="scripts/controllers/NuevoPost.js"></script>
     <!-- Cargamos las directivas -->
     <script src="scripts/directives/ElementoPost.js"></script>
     <script src="scripts/directives/VotacionPost.js"></script>
+    <script src="scripts/directives/SeleccionImagen.js"></script>
 
 </body>
 </html>

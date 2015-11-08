@@ -48,6 +48,12 @@ angular.module("cutregram").config(function($routeProvider) {
         }
     });
 
+    // Difinir la ruta de "Nuevo Post".
+    $routeProvider.when("/nuevo", {
+        controller: "NuevoPostCtrl",
+        templateUrl: "views/NuevoPost.html"
+    });
+
     // Definir la ruta de "Detalle de Post".
     $routeProvider.when("/detalle/:idPost", {
         controller: "DetallePostCtrl",

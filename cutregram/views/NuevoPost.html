@@ -1,0 +1,21 @@
+
+<article class="nuevo-post">
+    <div>
+        <!-- Directiva para seleccionar una imagen -->
+        <seleccion-imagen imagen-seleccionada="seleccionarImagen($imagen)"></seleccion-imagen>
+    </div>
+    <div>
+        <h5>Nuevo Post</h5>
+        <form name="nuevopost">
+            <div class="form-group">
+                <!-- Establecemos el texto del post como obligatorio -->
+                <input type="text" class="form-control" placeholder="Texto del post" ng-model="post.text" required />
+            </div>
+            <!-- El botón 'Volver' está deshabilitado si se está almacenando el post -->
+            <button class="btn btn-info" ng-click="volver()" ng-disabled="subiendo">Volver</button>
+            <!-- El botón 'Guardar' está deshabilitado si el formulario no está relleno,
+            no hay seleccionada una imagen o bien se está almacenando el post -->
+            <button class="btn btn-primary" ng-disabled="nuevopost.$invalid || !imagen || subiendo" ng-click="crearPost()">Guardar</button>
+        </form>
+    </div>
+</article>

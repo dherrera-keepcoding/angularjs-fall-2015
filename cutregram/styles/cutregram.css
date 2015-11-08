@@ -101,3 +101,31 @@ table tbody tr:hover {
 .detalle>div:nth-child(2) div button {
     margin-top: 24px;
 }
+
+.nuevo-post {
+    margin-top: 20px;
+}
+
+.nuevo-post>div {
+    display: inline-block;
+}
+
+.nuevo-post>div:nth-child(2) {
+    margin-left: 20px;
+    vertical-align: top;
+}
+
+.nuevo-post>div:nth-child(2) div input {
+    width: 400px;
+}
+
+.nuevo-post>div:nth-child(2) div button {
+    margin-top: 24px;
+}
+
+.seleccion-imagen {
+    width: 250px;
+}
+.seleccion-imagen .transparencia {
+    opacity: 0.5;
+}

@@ -1,12 +1,12 @@
 
 <td>
-    <img ng-src="{{ post.image_url }}" ng-if="post.image_url" alt="Imagen" width="64" class="img-rounded" />
+    <img ng-src="{{ ::post.image_url }}=s64" ng-if="::post.image_url" alt="Imagen" width="64px" height="64px" class="img-rounded" />
 </td>
 <td>
-    <p>{{ post.text }}</p>
+    <p>{{ ::post.text }}</p>
     <div>
         <small>
-            {{ post.author | Firma:post.created }}
+            {{ ::post.author | Firma:post.created }}
         </small>
     </div>
 </td>
