@@ -34,7 +34,7 @@
     <ul class="list-group">
         <li class="list-group-item" ng-repeat="comentario in post.comments">
             <p>{{ ::comentario.text }}</p>
-            <small> - {{ ::post.author | Firma:post.created }}</small>
+            <small> - {{ ::comentario.author | Firma:comentario.created }}</small>
         </li>
     </ul>
 </div>
